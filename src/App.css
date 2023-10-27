@@ -334,6 +334,7 @@ html::-webkit-scrollbar-track {
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 1;
+  align-items: center;
 }
 
 .transowner-container_h1 {
@@ -354,7 +355,7 @@ html::-webkit-scrollbar-track {
   box-sizing: border-box;
   margin-bottom: 20px;
   font-family: "Jost", sans-serif;
-  margin-right: 20px;
+  margin-right: 0px;
   width: 200px;
 }
 
