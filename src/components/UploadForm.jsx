@@ -33,7 +33,7 @@ function UploadForm() {
 
   // Metadata JSON Object
   const metadata = `{
-    "Name":"${name}",
+    "Title":"${fileNameWithoutExtension}",
     "Size":"${size}",
     "Type":"${type}",
     "LastModifiedDate":"${lastModifiedDate}",

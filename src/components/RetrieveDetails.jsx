@@ -23,6 +23,8 @@ function RetrieveDetails() {
     );
   }
 
+  const fileNameWithoutExtension = retrieved_data.data[1].split(".").slice(0, -1).join(".");
+
   return (
     <div className="retrievedoc-main">
       <div className="retrievedoc-container">
@@ -41,7 +43,7 @@ function RetrieveDetails() {
             <h1 className="retrievedDocDet_h1">Retrieved Document Details</h1>
             <div className="retrievedoc-container">
               <pre className="retrievedDocDet--pre">
-                Name: {retrieved_data.data[1]}
+                Title: {fileNameWithoutExtension}
                 <br></br>
                 Size: {retrieved_data.data[4]} bytes
                 <br></br>
