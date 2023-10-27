@@ -1,0 +1,40 @@
+.retrievedoc-main {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 30px;
+  max-width: 700px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 490px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.retrievedDocDet_h1 {
+  font-size: 35px;
+  margin-bottom: 50px;
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  color: white;
+}
+
+.retrievedDocDet--pre {
+  margin: 10px 0;
+  text-align: left;
+  font-family: "Jost", sans-serif;
+  font-size: large;
+  margin-bottom: 40px;
+  max-width: 100%;
+  border-radius: 20px;
+  padding: 40px;
+  background-image: linear-gradient(60deg, #33f8ef, #ffb78b);
+  position: relative;
+  box-shadow: 0 3px 10px 0 #33f8ef;
+}

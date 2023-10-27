@@ -1,0 +1,228 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "documentMapping",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "Title",
+        "type": "string"
+      },
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "MetaDataHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "string",
+            "name": "Name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "Owner",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "Type",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "Size",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "LastModifiedDate",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct DocumentTracker.MetaData",
+        "name": "data",
+        "type": "tuple"
+      },
+      {
+        "internalType": "enum DocumentTracker.ConfidentialityLevel",
+        "name": "level",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_identifier",
+        "type": "string"
+      }
+    ],
+    "name": "retrieveData",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "Title",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "bytes32",
+                "name": "MetaDataHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "string",
+                "name": "Name",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "Owner",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "Type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "Size",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "LastModifiedDate",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct DocumentTracker.MetaData",
+            "name": "data",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum DocumentTracker.ConfidentialityLevel",
+            "name": "level",
+            "type": "uint8"
+          }
+        ],
+        "internalType": "struct DocumentTracker.Data",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_identifier",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_newOwner",
+        "type": "string"
+      }
+    ],
+    "name": "transferOwnerShip",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_identifier",
+        "type": "string"
+      },
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "Title",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "bytes32",
+                "name": "MetaDataHash",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "string",
+                "name": "Name",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "Owner",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "Type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "Size",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "LastModifiedDate",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct DocumentTracker.MetaData",
+            "name": "data",
+            "type": "tuple"
+          },
+          {
+            "internalType": "enum DocumentTracker.ConfidentialityLevel",
+            "name": "level",
+            "type": "uint8"
+          }
+        ],
+        "internalType": "struct DocumentTracker.Data",
+        "name": "_data",
+        "type": "tuple"
+      }
+    ],
+    "name": "upload",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
