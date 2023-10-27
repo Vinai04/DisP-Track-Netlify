@@ -35,7 +35,7 @@ function UploadForm() {
   const metadata = `{
     "Name":"${name}",
     "Size":"${size}",
-    "Owner:"${owner},
+    "Owner":"${owner}",
     "Type":"${type}",
     "LastModifiedDate":"${lastModifiedDate}",
     "Document ID":"${docidRef.current}"   
