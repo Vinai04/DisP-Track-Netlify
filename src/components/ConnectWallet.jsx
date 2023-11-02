@@ -9,7 +9,7 @@ import { useStateProvider } from "../context/StateContext";
 import DisPTrack_abi from "../contracts/DisPTrack_abi.json";
 
 function ConnectWallet() {
-  const contractAddress = "0x1Cd8a4334689a32c4403286A9998324226B6514E";
+  const contractAddress = "0xE1a93700e6957E3d3F649CDB5a485383Ea0cc17B";
 
   const [{}, dispatch] = useStateProvider();
   const [dotLoader, setDotLoader] = useState(false);

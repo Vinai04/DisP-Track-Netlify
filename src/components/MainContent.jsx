@@ -3,6 +3,7 @@ import "../App.css";
 import RetrieveContainer from "./RetrieveContainer";
 import UploadContainer from "./UploadContainer";
 import TransferOwnerContainer from "./TransferOwnerContainer";
+import AddNewOwnerContainer from "./AddNewOwnerContainer";
 
 function MainContent() {
   return (
@@ -47,6 +48,13 @@ function MainContent() {
         </h1>
       </div>
       <TransferOwnerContainer />
+      <br />
+      <div className="heading--text">
+        <h1 className="transowner-container_h1">
+          Add a new Owner for the Document by providing it's unique Document ID
+        </h1>
+      </div>
+      <AddNewOwnerContainer />
     </div>
   );
 }

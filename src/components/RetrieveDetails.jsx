@@ -23,7 +23,7 @@ function RetrieveDetails() {
     );
   }
 
-  const fileNameWithoutExtension = retrieved_data.data[1].split(".").slice(0, -1).join(".");
+  const fileNameWithoutExtension = retrieved_data[0].split(".").slice(0, -1).join(".");
 
   return (
     <div className="retrievedoc-main">
@@ -45,13 +45,19 @@ function RetrieveDetails() {
               <pre className="retrievedDocDet--pre">
                 Title: {fileNameWithoutExtension}
                 <br></br>
-                Size: {retrieved_data.data[4]} bytes
+                Description: {retrieved_data[1]}
                 <br></br>
-                Owner: {retrieved_data.data[2]}
+                Confidentiality Level: {String(retrieved_data[2])}
                 <br></br>
-                Type: {retrieved_data.data[3]}
+                Number of Owners: {Object.keys(retrieved_data[3]).length}
                 <br></br>
-                LastModifiedDate: {String(retrieved_data.data[5])}
+                Owner: {retrieved_data[3]}
+                <br></br>
+                Type: {retrieved_data[4]}
+                <br></br>
+                Size: {retrieved_data[5]} bytes
+                <br></br>
+                LastModifiedDate: {String(retrieved_data[6])}
               </pre>
             </div>
           </>

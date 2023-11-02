@@ -18,7 +18,11 @@ function UploadForm() {
   const [uploadLoad, setUploadLoad] = useState(false);
   const [tick, setTick] = useState(false);
 
-  const [ownedByVal, setOwnedByVal] = useState(null)
+  // Use state variables for level and description
+  const [confLevel, setConfLevel] = useState(1); // Set the initial value to 1
+  const [description, setDescription] = useState("");
+
+  
 
   if (fileInfo == undefined) {
     return <Navigate to="/" />;
@@ -50,29 +54,34 @@ function UploadForm() {
     }
   }
 
-  let confVal = 1;
-  function handleConfidentiality(event) {
-    confVal = parseInt(event.target.value);
-  }
-
   // Hashing
   const metadataString = JSON.stringify(metadata);
   const hash = ethers.id(metadataString);
 
+  function handleConfidentiality(event) {
+    // Update the state variable for level
+    setConfLevel(parseInt(event.target.value));
+  }
+
+  function handleDescription(event) {
+    // Update the state variable for description
+    setDescription(event.target.value);
+  }
+
   // Upload function parameters
   const _identifier = docidRef.current;
-  const _data = {
+  let _data = {
     Title: String(name),
-    data: {
-      MetaDataHash: hash,
-      Name: String(name),
-      Owner: ownedByVal,
-      Type: String(type),
-      Size: String(size),
-      LastModifiedDate: String(lastModifiedDate),
-    },
-    level: confVal,
+    Description: description,
+    level: confLevel,
+    ownerList: [],
+    Type: String(type),
+    Size: String(size),
+    LastModifiedDate: String(lastModifiedDate),
+    MetaDataHash: hash
   };
+  
+  console.log(_data);
 
   const helperHome = () => {
     navigate("/");
@@ -135,7 +144,7 @@ function UploadForm() {
 
   const [copySuccess, setCopySuccess] = useState(false);
 
-  const copyToClipboard = () => {
+  const copyToClipboard = (event) => {
     event.preventDefault();
     const el = document.createElement("textarea");
     el.value = docidRef.current;
@@ -185,6 +194,8 @@ function UploadForm() {
               cols="50"
               className="descriptionbox"
               placeholder="Write about your Document"
+              onChange={handleDescription}
+              value={description}
             ></textarea>
 
             <label htmlFor="confidentiality" className="uploadform_label">
@@ -194,21 +205,12 @@ function UploadForm() {
               onChange={handleConfidentiality}
               id="confidentiality"
               name="confidentiality"
+              value={confLevel}
             >
-              <option value="1">Top Secret</option>
-              <option value="2">Secret</option>
-              <option value="3">Public</option>
+              <option value="0">Top Secret</option>
+              <option value="1">Secret</option>
+              <option value="2">Public</option>
             </select>
-
-            <label className="uploadform_label">Owner</label>
-            <input
-              type="text"
-              id="ownedby"
-              name="ownedby"
-              placeholder="Who owns the Document?"
-              className="uploadforminput"
-              onChange={(e)=>setOwnedByVal(e.target.value)}
-            />
 
             <label htmlFor="metadata" className="uploadform_label">
               MetaData
