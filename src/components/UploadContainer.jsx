@@ -42,7 +42,6 @@ function UploadContainer() {
   };
 
   const handleDragOver = (event) => {
-    // console.log(event)
     event.preventDefault();
     setIsDragging(true);
   };

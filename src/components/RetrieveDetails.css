@@ -2,13 +2,13 @@
   text-align: center;
   margin: 0 auto;
   margin-top: 30px;
-  max-width: 700px;
   padding: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 490px;
+  min-height: 600px;
+  align-items: center;
 }
 
 .loader {
@@ -25,6 +25,10 @@
   color: white;
 }
 
+.retrievedoc-container {
+  max-width: 65%;
+}
+
 .retrievedDocDet--pre {
   margin: 10px 0;
   text-align: left;
@@ -37,4 +41,7 @@
   background-image: linear-gradient(60deg, #33f8ef, #ffb78b);
   position: relative;
   box-shadow: 0 3px 10px 0 #33f8ef;
+
+  /*overflow: auto;*/
+  white-space: pre-line;
 }

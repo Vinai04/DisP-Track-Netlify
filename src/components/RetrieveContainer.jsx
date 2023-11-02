@@ -6,8 +6,7 @@ import { reducerCases } from "../context/Constants";
 import { useStateProvider } from "../context/StateContext";
 
 function RetrieveContainer() {
-  const [{contract}, dispatch] =
-    useStateProvider();
+  const [{ contract }, dispatch] = useStateProvider();
 
   const [redir, setRedir] = useState(false);
 
@@ -19,7 +18,6 @@ function RetrieveContainer() {
     event.preventDefault();
 
     if (contract === undefined) {
-      console.log("Warning123");
       toast.warn("Wallet not connected", {
         position: "top-center",
         autoClose: 3000,
@@ -47,17 +45,28 @@ function RetrieveContainer() {
       return;
     }
 
-    console.log(event.target.documentid.value);
-    let retrieved_data = await contract.retrieveData(
-      event.target.documentid.value
-    );
-    console.log("contractValue=", retrieved_data);
-    dispatch({
-      type: reducerCases.SET_RETRIEVED_DATA,
-      retrieved_data: retrieved_data,
-    });
-    dispatch({ type: reducerCases.SET_REDIRECT, redirect_page: true });
-    setRedir(true);
+    try {
+      let retrieved_data = await contract.retrieveData(
+        event.target.documentid.value
+      );
+      dispatch({
+        type: reducerCases.SET_RETRIEVED_DATA,
+        retrieved_data: retrieved_data,
+      });
+      dispatch({ type: reducerCases.SET_REDIRECT, redirect_page: true });
+      setRedir(true);
+    } catch (err) {
+      toast.error("You are not the Owner of this Document!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
   };
 
   return (

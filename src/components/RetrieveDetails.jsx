@@ -14,7 +14,6 @@ function RetrieveDetails() {
 
   const [{ redirect_page, retrieved_data }, dispatch] = useStateProvider();
 
-  console.log("In Retrieve Details", retrieved_data);
   if (redirect_page == false) {
     return (
       <>
@@ -23,7 +22,10 @@ function RetrieveDetails() {
     );
   }
 
-  const fileNameWithoutExtension = retrieved_data[0].split(".").slice(0, -1).join(".");
+  const fileNameWithoutExtension = retrieved_data[0]
+    .split(".")
+    .slice(0, -1)
+    .join(".");
 
   return (
     <div className="retrievedoc-main">
@@ -41,23 +43,23 @@ function RetrieveDetails() {
         {!loader && (
           <>
             <h1 className="retrievedDocDet_h1">Retrieved Document Details</h1>
-            <div className="retrievedoc-container">
+            <div>
               <pre className="retrievedDocDet--pre">
-                Title: {fileNameWithoutExtension}
+                <b>Title:</b> {fileNameWithoutExtension}
                 <br></br>
-                Description: {retrieved_data[1]}
+                <b>Description:</b> {retrieved_data[1]}
                 <br></br>
-                Confidentiality Level: {String(retrieved_data[2])}
+                <b>Confidentiality Level:</b> {String(retrieved_data[2])}
                 <br></br>
-                Number of Owners: {Object.keys(retrieved_data[3]).length}
+                <b>Number of Owners:</b> {Object.keys(retrieved_data[3]).length}
                 <br></br>
-                Owner: {retrieved_data[3]}
+                <b>Owner(s):</b> {retrieved_data[3].join(", ")}
                 <br></br>
-                Type: {retrieved_data[4]}
+                <b>Type:</b> {retrieved_data[4]}
                 <br></br>
-                Size: {retrieved_data[5]} bytes
+                <b>Size:</b> {retrieved_data[5]} bytes
                 <br></br>
-                LastModifiedDate: {String(retrieved_data[6])}
+                <b>LastModifiedDate:</b> {String(retrieved_data[6])}
               </pre>
             </div>
           </>

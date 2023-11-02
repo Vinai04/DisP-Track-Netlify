@@ -51,7 +51,7 @@ function MainContent() {
       <br />
       <div className="heading--text">
         <h1 className="transowner-container_h1">
-          Add a new Owner for the Document by providing it's unique Document ID
+          Add a New Owner for the Document by providing it's unique Document ID
         </h1>
       </div>
       <AddNewOwnerContainer />

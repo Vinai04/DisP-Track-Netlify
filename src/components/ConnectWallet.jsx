@@ -9,7 +9,7 @@ import { useStateProvider } from "../context/StateContext";
 import DisPTrack_abi from "../contracts/DisPTrack_abi.json";
 
 function ConnectWallet() {
-  const contractAddress = "0xE1a93700e6957E3d3F649CDB5a485383Ea0cc17B";
+  const contractAddress = "0xf012a0bC0Af3E4927730995bd7DC97Db5B7f982F";
 
   const [{}, dispatch] = useStateProvider();
   const [dotLoader, setDotLoader] = useState(false);
@@ -52,7 +52,6 @@ function ConnectWallet() {
         const account = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        console.log(account);
         accountText =
           account[0].slice(0, 6) +
           "..." +

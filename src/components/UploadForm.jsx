@@ -18,11 +18,8 @@ function UploadForm() {
   const [uploadLoad, setUploadLoad] = useState(false);
   const [tick, setTick] = useState(false);
 
-  // Use state variables for level and description
-  const [confLevel, setConfLevel] = useState(1); // Set the initial value to 1
+  const [confLevel, setConfLevel] = useState(0);
   const [description, setDescription] = useState("");
-
-  
 
   if (fileInfo == undefined) {
     return <Navigate to="/" />;
@@ -32,20 +29,17 @@ function UploadForm() {
 
   const fileNameWithoutExtension = name.split(".").slice(0, -1).join(".");
 
-  // Use useRef to store the docid
   const docidRef = useRef(uuid4());
 
-  // Metadata JSON Object
-  const metadata = `{
+  const printMetadata = `{
     "Title":"${fileNameWithoutExtension}",
     "Size":"${size}",
     "Type":"${type}",
     "LastModifiedDate":"${lastModifiedDate}",
     "Document ID":"${docidRef.current}"   
   }`;
-  console.log(typeof(metadata))
 
-  const parsedMetadata = JSON.parse(metadata);
+  const parsedMetadata = JSON.parse(printMetadata);
 
   let md = "";
   for (const key in parsedMetadata) {
@@ -54,21 +48,27 @@ function UploadForm() {
     }
   }
 
-  // Hashing
-  const metadataString = JSON.stringify(metadata);
+  const hashMetadata = `{
+    "Title":"${fileNameWithoutExtension}",
+    "Description":"${description}",
+    "Confidentiality Level":"${confLevel}",
+    "Type":"${type}",
+    "Size":"${size}",
+    "LastModifiedDate":"${lastModifiedDate}",
+    "Document ID":"${docidRef.current}"   
+  }`;
+
+  const metadataString = JSON.stringify(hashMetadata);
   const hash = ethers.id(metadataString);
 
   function handleConfidentiality(event) {
-    // Update the state variable for level
     setConfLevel(parseInt(event.target.value));
   }
 
   function handleDescription(event) {
-    // Update the state variable for description
     setDescription(event.target.value);
   }
 
-  // Upload function parameters
   const _identifier = docidRef.current;
   let _data = {
     Title: String(name),
@@ -78,10 +78,8 @@ function UploadForm() {
     Type: String(type),
     Size: String(size),
     LastModifiedDate: String(lastModifiedDate),
-    MetaDataHash: hash
+    MetaDataHash: hash,
   };
-  
-  console.log(_data);
 
   const helperHome = () => {
     navigate("/");
@@ -90,7 +88,6 @@ function UploadForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (contract === undefined) {
-      console.log("Warning");
       toast.warn("Wallet not connected", {
         position: "top-center",
         autoClose: 3000,
@@ -109,12 +106,9 @@ function UploadForm() {
       transaction_status: true,
     });
     try {
-      console.log(_data," "+_identifier)
       const tx = await contract.upload(_identifier, _data);
-      
-      console.log(tx);
+
       let trans = await tx.wait();
-      console.log(trans);
       setUploadLoad(false);
       setTick(true);
       dispatch({
@@ -133,7 +127,6 @@ function UploadForm() {
       }),
         setTimeout(helperHome, 3000);
     } catch (err) {
-      console.log(err);
       dispatch({
         type: reducerCases.SET_TRANSACTION_STATUS,
         transaction_status: false,
@@ -212,7 +205,7 @@ function UploadForm() {
               <option value="2">Public</option>
             </select>
 
-            <label htmlFor="metadata" className="uploadform_label">
+            <label htmlFor="printMetadata" className="uploadform_label">
               MetaData
             </label>
             <div>
