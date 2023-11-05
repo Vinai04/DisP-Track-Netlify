@@ -200,9 +200,10 @@ function UploadForm() {
               name="confidentiality"
               value={confLevel}
             >
-              <option value="0">Top Secret</option>
-              <option value="1">Secret</option>
-              <option value="2">Public</option>
+              <option value="0">Classified</option>
+              <option value="1">Top Secret</option>
+              <option value="2">Secret</option>
+              <option value="3">Confidential</option>
             </select>
 
             <label htmlFor="printMetadata" className="uploadform_label">
