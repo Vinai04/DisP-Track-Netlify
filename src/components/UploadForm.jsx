@@ -115,7 +115,7 @@ function UploadForm() {
         type: reducerCases.SET_TRANSACTION_STATUS,
         transaction_status: false,
       });
-      toast.success("Document Uploaded Successfully", {
+      toast.success("Document Metadata Uploaded Successfully", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: true,
