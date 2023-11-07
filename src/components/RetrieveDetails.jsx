@@ -40,7 +40,11 @@ function RetrieveDetails() {
           />
         )}
 
-        {!loader && (
+        {!loader && Object.keys(retrieved_data[3]).length===0 && (
+        <h1 style={{color:"white"}}>This Document was deleted!</h1>
+        )}
+
+        {!loader && Object.keys(retrieved_data[3]).length!==0 && (
           <>
             <h1 className="retrievedDocDet_h1">Retrieved Document Details</h1>
             <div>

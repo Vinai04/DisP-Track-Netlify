@@ -4,6 +4,7 @@ import RetrieveContainer from "./RetrieveContainer";
 import UploadContainer from "./UploadContainer";
 import TransferOwnerContainer from "./TransferOwnerContainer";
 import AddNewOwnerContainer from "./AddNewOwnerContainer";
+import DeleteContainer from "./DeleteContainer";
 
 function MainContent() {
   return (
@@ -37,7 +38,7 @@ function MainContent() {
       <br />
       <div className="heading--text">
         <h1 className="retrieve-container_h1">
-          Retrieve Document metadata by providing it's unique Document ID
+          Retrieve Document Metadata by providing it's unique Document ID
         </h1>
       </div>
       <RetrieveContainer />
@@ -50,11 +51,18 @@ function MainContent() {
       <TransferOwnerContainer />
       <br />
       <div className="heading--text">
-        <h1 className="transowner-container_h1">
+        <h1 className="addnewowner-container_h1">
           Add a New Owner for the Document by providing it's unique Document ID
         </h1>
       </div>
       <AddNewOwnerContainer />
+      <br />
+      <div className="heading--text">
+        <h1 className="deletedoc-container_h1">
+          Delete the Document Metadata by providing it's unique Document ID
+        </h1>
+      </div>
+      <DeleteContainer />
     </div>
   );
 }

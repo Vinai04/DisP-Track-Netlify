@@ -56,7 +56,7 @@ function RetrieveContainer() {
       dispatch({ type: reducerCases.SET_REDIRECT, redirect_page: true });
       setRedir(true);
     } catch (err) {
-      toast.error("You are not the Owner of this Document!", {
+      toast.error("Retrieving Document Unsuccesful", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: true,
